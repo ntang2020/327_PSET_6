@@ -1,21 +1,32 @@
 from square import Square
+from worker import Worker
 
 class Board:
     def __init__(self):
         """Class forthe board"""
-        self._board = [[Square() for _ in range(5)] for _ in range(5)]
+        self._matrix = [[Square() for _ in range(5)] for _ in range(5)]
 
     #make this a __str__()
-    def _display_board(self):
-        for row in self._board:
-            print(' '.join(row))
-        print()
+    def __str__(self):
+        line = "+--+--+--+--+--+\n"
+        display = line
+        for row in self._matrix:
+            for element in row:
+                display += "|" + element.__str__()
+            display += "|\n" + line 
+        return display
 
-    def get_square(self, x, y):
-        return self._board[x][y]
+    #def place_worker(self,row,col):
 
 
+    def empty_square(self, row, col):
+        if self.get_square(row,col).isEmpty():
+            return True
+        else: return False
+
+        
+    def get_square(self, row, col):
+        return self._matrix[row][col]
+    
 
 
-
-North = [-1, 0]

@@ -8,4 +8,8 @@ class Level:
             self._height = self._height + 1
         else:
             #what happens here? has the player won?
+            return
+    
+    def __str__(self):
+        return str(self._height)
 
