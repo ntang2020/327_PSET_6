@@ -1,46 +1,29 @@
-from square import Square
-from exceptions import *
-from board import Board
-
+from cell import Square
 
 class Worker:
     """Class for a worker piece"""
-    def __init__(self, letter):
-        self._letter = letter #ABZY
-        self._curr_square = None
-        #self._coord = None
-        self.COORD_LIMIT = 4
+    def __init__(self, name):
+        self._name = name
+        self._height = None
+        self._location =
 
-        if letter == "A":
-            self._coord = (3,1)
-        elif letter == "B":
-            self._coord = (1,3)
-        elif letter == "Y":
-            self._coord = (1,1)
-        elif letter == "Z": #else:
-            self._coord = (3,3)
-    
-    def move(self, direction):
-        
-        return 
+    def update_workers_location(self):
+        pass
 
-    def _check_valid_move(self,direction):
-        new_coord = self._coord + direction
-        if new_coord[0] > self.COORD_LIMIT or new_coord[1] > self.COORD_LIMIT:
-            raise InvalidMove()
-        
-        
+    def update_workers_height(self):
+        pass
 
+    def get_valid_moves(self):
+        pass
 
+    def __str__(self):
+        return self._type
 
-        
-
-
+    #When you move a worker, must let the worker object know that its position has changed i.e. self.row - 1 and self.col - 1
 
     
+    # def move(self):
+    #     pass
 
-    def get_letter(self): #alt could make into a string method
-        return self._letter
-    
-    
-
+    # def build(self):
+    #     pass

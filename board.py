@@ -1,32 +1,24 @@
-from square import Square
-from worker import Worker
+from cell import Cell
+
 
 class Board:
     def __init__(self):
         """Class forthe board"""
-        self._matrix = [[Square() for _ in range(5)] for _ in range(5)]
+        self._matrix = [[Cell() for _ in range(5)] for _ in range(5)]
 
-    #make this a __str__()
+    def update_cell_height(self, row, col):
+        self._matrix[row][col].update_own_height()
+
+    def move_build(self):
+        #update_workers_location() & update_workers_height() AND update_cell_height
+        pass
+
+    def board_score(self):
+        pass
+
     def __str__(self):
-        line = "+--+--+--+--+--+\n"
-        display = line
-        for row in self._matrix:
-            for element in row:
-                display += "|" + element.__str__()
-            display += "|\n" + line 
-        return display
-
-    #def place_worker(self,row,col):
+        pass
 
 
-    def empty_square(self, row, col):
-        if self.get_square(row,col).isEmpty():
-            return True
-        else: return False
-
-        
-    def get_square(self, row, col):
-        return self._matrix[row][col]
-    
-
-
+    # self._workers =  self._matrix[3][2] =  Worker('A', 3, 2)
+    #     Worker('B'): self._matrix[2][4], Worker('Y'): (4, 3), Worker('Z'): (4, 4)
