@@ -4,12 +4,12 @@ from cell import Cell
 class Board:
     def __init__(self):
         """Class forthe board"""
-        self._matrix = [[Cell() for _ in range(5)] for _ in range(5)]
+        self._matrix = [[Cell(row, col) for col in range(5)] for row in range(5)]
 
     def update_cell_height(self, row, col):
         self._matrix[row][col].update_own_height()
 
-    def move_build(self):
+    def move_build(self, move_direction, build_direction):
         #update_workers_location() & update_workers_height() AND update_cell_height
         pass
 

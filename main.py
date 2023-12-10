@@ -1,5 +1,5 @@
 from board import Board
-from player import Player
+from player import Player, White_Player, Blue_Player
 
 
 DIRECTIONS = {
@@ -11,14 +11,13 @@ class Game:
     """Manager class for the Game"""
     def __init__(self):
         self._board = Board()
-        self._players = Player()
+        self._players = [White_Player(), Blue_Player()]
         self._strategy_for_players = ??
         self._turn_number = 1
         self._curr_player = None    #OR curr_player = 'White' ?
         self._score = None 
 
-        self._white_player = White_Player()
-        self._blue_player = Blue_Player()
+       
 
     #helpers  
     def change_player(self):
@@ -35,11 +34,11 @@ class Game:
         """Loop to run the game """
         while True:
             self._print_board()
-            worker_choice = input("Select a worker to move")
-            move_direction_choice = input("Select a direction to move (n, ne, e, se, s, sw, w, nw)")
-            build_direction_choice = input("Select a direction to build (n, ne, e, se, s, sw, w, nw)")
+            
 
-            self._players.take_turn(move_direction_choice, build_direction_choice)
+            self._players.take_turn()
+
+            #Nicole: self._players.take_turn().do_move()
 
 
             print(f"{worker_choice}, {move_direction_choice}, {build_direction_choice}")

@@ -1,8 +1,8 @@
 class Cell:
     """Class for a square/cell on the board"""
-    def __init__(self):
+    def __init__(self, row, col):
         self._height = None
-        self._location = 
+        self._location = (row, col)
         self._worker = None
 
     def change_own_height(self):
