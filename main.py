@@ -1,5 +1,5 @@
 from board import Board
-from player import Player, WhitePlayer, BluePlayer, Strategy, HumanStrategy
+from player import Player, Strategy, HumanStrategy
 
 
 DIRECTIONS = {
@@ -9,11 +9,10 @@ DIRECTIONS = {
 #here's a game and here we are as 2 players: whose turn is it etc
 class Game:
     """Manager class for the Game"""
-    def __init__(self):
+    def __init__(self, white_player, blue_player):
         self._board = Board()
-        self._human_strategy = HumanStrategy(self._board, human_strategy)
-        self._white_player = WhitePlayer(self._board, self._human_strategy)
-        self._blue_player = BluePlayer(self._board, self._human_strategy)
+        self._white_player = Player('White', HumanStrategy(), self._board)
+        self._blue_player = Player('Blue', HumanStrategy(), self._board)
         self._players = [self._white_player, self._blue_player]
         # self._strategy_for_players = ?? argv[1], argv[2] etc
         self._turn_number = 1
