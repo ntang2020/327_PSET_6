@@ -7,9 +7,9 @@ from abc import ABC, abstractmethod
 
 class Player:
     """Class for players of the game."""
-    def __init__(self, color, strategy, board):   #def __init__(self, board, strategy, workers):
+    def __init__(self, color, strategy):   #def __init__(self, board, strategy, workers):
         self._strategy = strategy
-        self._board = board
+        # self._board = board
         self._workers = self.initialize_workers(color)
     
     def initialize_workers(self, color):
@@ -36,20 +36,20 @@ class Strategy(ABC):
         #check valid
         #do moves
     @abstractmethod
-    def take_turn(self, player):   #def take_turn(self, player)
+    def take_turn(self):   #def take_turn(self, player)
         pass
 
 class HumanStrategy(Strategy):
-    def take_turn(self, player):
+    def take_turn(self):
         # implement human input logic: #get users input, #check valid, #do moves
-        worker_choice = input("Select a worker to move")
-        self._worker_choice = self._workers[worker_choice]
+        self._worker_choice = input("Select a worker to move")
+        # self._worker_choice = self._workers[worker_choice]
 
-        move_direction_choice = input("Select a direction to move (n, ne, e, se, s, sw, w, nw)")
+        self._move_direction_choice = input("Select a direction to move (n, ne, e, se, s, sw, w, nw)")
 
 
 
-        build_direction_choice = input("Select a direction to build (n, ne, e, se, s, sw, w, nw)")
+        self._build_direction_choice = input("Select a direction to build (n, ne, e, se, s, sw, w, nw)")
 
         #for Human:
         #creates a Move object and (calls do_move() on it?)
@@ -62,14 +62,23 @@ class HumanStrategy(Strategy):
   
 
 class RandomStrategy(Strategy):
-    def take_turn(self, player):
+    def take_turn(self):
         pass
 
 
 class HeuristicStrategy(Strategy):
-    def take_turn(self, player):
+    def take_turn(self):
         pass
 
 #How to use:
 # player = Player(HumanStrategy(), board, 'White')
 # player.take_turn()
+
+class Factory:
+    def create_players(self, color, strategy):
+        if strategy == 'human':
+            return Player(color, HumanStrategy())
+        elif strategy == 'random':
+            return Player(color, RandomStrategy())
+        elif strategy == 'heuristic':
+            return Player(color, HeuristicStrategy())
