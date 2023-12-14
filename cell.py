@@ -10,6 +10,16 @@ class Cell:
         self._location = (row, col)
         self._worker = worker
 
+    def check_worker_on_cell(self):
+        #return self._worker
+        if self._worker: 
+            return True
+        else:
+            return False
+    
+    def get_cell_height(self):
+        return self._height
+
     #build a level
     def update_own_height(self):  #def update_own_height(self, build_direction)
         if self._height < 4:
@@ -17,6 +27,10 @@ class Cell:
 
     def set_worker_on_cell(self, worker):
         self._worker = worker
+    
+    def remove_worker_on_cell(self):
+        #return self._worker
+        self._worker = None
 
     def __str__(self):
         if self._worker:
