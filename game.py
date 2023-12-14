@@ -45,7 +45,7 @@ class Game:
         print(f"Turn: {self._turn_number}, Current Player: {self._curr_player._color}")
 
         while True:
-            self._curr_player.take_turn()
+            self._curr_player.take_turn(self._board)
             self.change_player()
 
 
@@ -55,10 +55,10 @@ class Game:
     #same as init?    
     def setup(self):
         # Hardcode workers on the board
-        self._board._matrix[4][2]._worker = self._white_player._worker_A
-        self._board._matrix[2][4]._worker = self._white_player._worker_B 
-        self._board._matrix[2][2]._worker = self._blue_player._worker_Y
-        self._board._matrix[4][4]._worker = self._blue_player._worker_Z
+        self._board._matrix[3][1]._worker = self._white_player._worker_A
+        self._board._matrix[1][3]._worker = self._white_player._worker_B 
+        self._board._matrix[1][1]._worker = self._blue_player._worker_Y
+        self._board._matrix[3][3]._worker = self._blue_player._worker_Z
 
     def undo_redo(self):
         pass
